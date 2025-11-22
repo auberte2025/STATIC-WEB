@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Traffic Lights</title>
+  <style>
+    .light {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      margin: 10px auto;
+      background: gray;
+    }
+    #red.active { background: red; }
+    #yellow.active { background: yellow; }
+    #green.active { background: green; }
+  </style>
+</head>
+<body>
+  <div id="red" class="light"></div>
+  <div id="yellow" class="light"></div>
+  <div id="green" class="light"></div>
+
+  <script>
+    const lights = ["red", "yellow", "green"];
+    let current = 0;
+
+    function changeLight() {
+      lights.forEach(id => document.getElementById(id).classList.remove("active"));
+      document.getElementById(lights[current]).classList.add("active");
+
+      // igihe buri tara rimara
+      if (lights[current] === "red") delay = 3000;
+      else if (lights[current] === "yellow") delay = 1000;
+      else delay = 3000;
+
+      current = (current + 1) % lights.length;
+      setTimeout(changeLight, delay);
+    }
+
+    changeLight();
+  </script>
+</body>
+</html>
